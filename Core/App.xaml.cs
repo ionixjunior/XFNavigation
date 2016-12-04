@@ -1,4 +1,7 @@
-﻿using Xamarin.Forms;
+﻿using Core.Helpers;
+using Core.Interfaces;
+using Core.Views;
+using Xamarin.Forms;
 
 namespace Core
 {
@@ -8,7 +11,9 @@ namespace Core
 		{
 			InitializeComponent();
 
-			MainPage = new CorePage();
+			DependencyService.Register<INavigationHelper, NavigationHelper>();
+
+			MainPage = new NavigationPage(new Page1View());
 		}
 
 		protected override void OnStart()
